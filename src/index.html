@@ -5,14 +5,29 @@
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#FFFFFF" />
   <link rel="manifest" href="/manifest.json">
-  <title>We Chat</title> 
+  <title>We Chat</title>
+  <meta name="Description" content="First PWA Vue.js App">
+
+  <link rel="icons" type="image/png" sizes="192x192"  href="/192.png">
+  <link rel="icons" type="image/png" sizes="512x512"  href="/512.png">
+  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://kit.fontawesome.com/dec6a2602b.js" crossorigin="anonymous"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/pouchdb@7.1.1/dist/pouchdb.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
 
 
 </head>
 <body>
-  <div id="app"></div>      
+  <section id="content">
+    <div id="app"></div>
+  </section>
+</div>
+  <noscript>To run this application, JavaScript is required to be enabled.</noscript>
 </body>
 </html>
 
@@ -27,7 +42,7 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 
-<style>
-
+<style type="text/css">
+html, body {height:100%;margin:0;}
 </style>
 

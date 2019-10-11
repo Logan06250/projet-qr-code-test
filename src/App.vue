@@ -1,27 +1,36 @@
 <template>
   <div id="app">
-    <webapp-header />
-    <webapp-content />
-    <webapp-footer />
+    <div id="content">
+      <router-view/>
+    </div>
   </div>
 </template>
 <script>
-  import Header from './components/Header'
-  import Footer from './components/Footer'
-  import ManageProfile from './components/ManageProfile'
-  
+
+  import Home from './components/Home'
+  import MyAccount from './components/MyAccount'
+  import { Slide } from 'vue-burger-menu'
 
   export default {
     name: 'App',
     components: {
-      'webapp-header':Header,
-      'webapp-content':ManageProfile,
-      'webapp-footer':Footer
-      
+      Home,
+      MyAccount,
+      Slide
+    },
+    methods: {
     }
   };
 </script>
 
-<style scoped>
-
+<style type="text/css">
+  footer{
+    background:#ffffff;
+    position:absolute;
+    bottom:0;
+    width:100%;
+  }
+  #content{
+    margin-top: 20px;
+  }
 </style>

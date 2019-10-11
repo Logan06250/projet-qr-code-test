@@ -1,16 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ManageProfile from '@/components/ManageProfile'
-
-
+import Home from '@/components/Home'
+import MyAccount from '@/components/MyAccount'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'ManageProfile',
-      component: ManageProfile
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/MyAccount',
+      name: 'MyAccount',
+      component: MyAccount
     }
   ]
 })

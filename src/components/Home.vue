@@ -1,92 +1,46 @@
 <template>
+	<center>
+		<div class="container-fluid">
+			<h1>Inspector Gadget</h1>
+			<br>
+			<img src= "../assets/logo.png" class="img-fluid">
+			<br>
+			<br>
+		</div>
+		<div class="container-fluid">
+          <form>
+             <button type="button" class="btn btn-info btn-circle fa fa-list" onclick="window.location.href= '#/MyReports'" ></button>
+              <button type="button" class="btn btn-info btn-circle fas fa-user" onclick="window.location.href= '#/MyAccount'" style="margin-right: 20px"></button>
+             
+          </form>
+        </div>
+	</center>
 
-<div class="container">
-<form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="firstName">First Name:</label>
-      <input type="text" class="form-control" id="firstName" placeholder="First Name">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="lastName">Last Name:</label>
-      <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-    </div>
-    <label for="inputEmail">Your Email:</label>
-    <input type="email" class="form-control" id="inputEmail" placeholder="email@gmail.com">
-    <div class="form-group col-md-6">
-      <label for="companyName">Company Name:</label>
-      <input type="text" class="form-control" id="companyName" placeholder="Terretalabs">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputEmailCompany">Company Email:</label>
-      <input type="email" class="form-control" id="inputEmailCompany" placeholder="email@gmail.com">
-    </div>
-    <div class="form-group col-md-10">
-  <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" @keypress="isNumber($event)" id="inputZip"
-      placeholder="46022">
-    </div>
-    <div class="form-group">
-      <label for="phone">Phone Number</label>
-      <input type="text" @keypress="isNumber($event)"class="form-control" id="phone" placeholder="0 895 896 180">
-    </div>
-  </div>
-    <button type="submit" class="btn btn-primary" @click="newUser()">Submit</button>
-</form>
-</div>
+
 </template>
-<script>
-  window.db = new PouchDB("User")
-  console.log("Local database created and imported")
-export default{
-  data(){
-          return{
-            User:[
-            ]
-        }
-      },
-  methods: {
-    isNumber: function(evt) {
-      evt = (evt) ? evt : window.event;
-      var charCode = (evt.which) ? evt.which : evt.keyCode;
-      if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
-        evt.preventDefault();;
-      } else {
-        return true;
-      }
-    },
-    newUser: function(){
+<script LANGUAGE="JavaScript">
 
-      var person = {
-            _id: new Date().toISOString(),
-            firstName: document.getElementById("firstName").value,
-            lastName: document.getElementById("lastName").value,
-            yourEmail: document.getElementById("inputEmail").value,
-            companyName: document.getElementById("companyName").value,
-            emailCompany: document.getElementById("inputEmailCompany").value,
-            address: document.getElementById("inputAddress").value,
-            zipCode: document.getElementById("inputZip").value,
-            phone: document.getElementById("phone").value,
-        }
-        db.put(person).then((res) => {
-            console.log("Profil Added")
-            this.User.push(person)
-        }).catch((err) => {
-            console.error(err)
-        })
-        db.allDocs({ include_docs: true, descending: true }, (err, doc) => {
-                    console.log(doc)
-                }).catch((err) => {
-                    console.error(err)
-                })
-                alert("Profile created, thank you " + person.firstName)
-    }
-  }
-};
 </script>
 <style>
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 110px;
+    height: 110px;
+    padding: 6px 0px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+    font-size: 50px;
+}
+
 </style>
