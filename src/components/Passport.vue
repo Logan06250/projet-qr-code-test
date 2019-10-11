@@ -9,7 +9,7 @@
           <span>Account</span>  
         </a>
         <a id="home" href='#/'> 
-          <span>Form</span>  
+          <span>Form</span> 
         </a>
       </Slide>
       <h1 style="margin-left: 80px; padding-top: 5px">{{ title }}</h1>
@@ -19,19 +19,13 @@
       <form>
     <div class="row">
       <div class="col">
-         <button style="margin-top: 50px" type="button" class="btn btn-info btn-circle fas fa-user" onclick="window.location.href= '#/AccountInfo'" ></button>
+         <button style="margin-top: 50%" type="button" class="btn btn-info btn-circle fas fa-book" onclick="window.location.href= '#/AccountInfo'" ></button>
         <p>Account info</p>
       </div>
 
-      <div class="w-100"></div>
-      <div class="col">
-        <button type="button" class="btn btn-info btn-circle fas fa-passport" onclick="window.location.href= '#/Passport'" ></button>
-        <p>Passeport info</p>
-      </div>
-      <div class="w-100"></div>
-      <div class="col">
-        <button type="button" class="btn btn-info btn-circle fas fa-camera" onclick="window.location.href= '#/Selfie'"></button>
-        <p>Take a selfie</p>
+    </div>
+  </form>
+  </center>
       </div>
     </div>
   </form>
@@ -43,7 +37,7 @@ import { Slide } from 'vue-burger-menu'
 export default{
   data(){
           return{
-            title: "My account",
+            title: "Passport",
         }
       },
   components: {

@@ -9,6 +9,10 @@
 
   import Home from './components/Home'
   import MyAccount from './components/MyAccount'
+  import AccountInfo from './components/AccountInfo'
+  import Passport from './components/Passport'
+  import Formulaire from './components/Formulaire'
+  import Selfie from './components/Selfie'
   import { Slide } from 'vue-burger-menu'
 
   export default {
@@ -16,6 +20,10 @@
     components: {
       Home,
       MyAccount,
+      AccountInfo,
+      Passport,
+      Formulaire,
+      Selfie,
       Slide
     },
     methods: {

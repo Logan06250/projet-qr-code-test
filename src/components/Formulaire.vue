@@ -9,33 +9,28 @@
           <span>Account</span>  
         </a>
         <a id="home" href='#/'> 
-          <span>Form</span>  
+          <span>Form</span> 
         </a>
       </Slide>
       <h1 style="margin-left: 80px; padding-top: 5px">{{ title }}</h1>
       <div style="padding-top: 1px"></div>
     </div>
     <center>
-      <form>
-    <div class="row">
-      <div class="col">
-         <button style="margin-top: 50px" type="button" class="btn btn-info btn-circle fas fa-user" onclick="window.location.href= '#/AccountInfo'" ></button>
-        <p>Account info</p>
-      </div>
-
-      <div class="w-100"></div>
-      <div class="col">
-        <button type="button" class="btn btn-info btn-circle fas fa-passport" onclick="window.location.href= '#/Passport'" ></button>
-        <p>Passeport info</p>
-      </div>
-      <div class="w-100"></div>
-      <div class="col">
-        <button type="button" class="btn btn-info btn-circle fas fa-camera" onclick="window.location.href= '#/Selfie'"></button>
-        <p>Take a selfie</p>
-      </div>
-    </div>
-  </form>
-  </center>
+      	<form>
+	      	<div class="row">
+		    	<div class="col">
+		    		<p style="margin-top: 10%; font-size:50px"class="fas fa-file-alt"></p>
+		    		<p>Forms not stamped</p>
+		    	</div>
+		    	<div class="w-100"></div>
+		    	<div class="col">
+		    		<p style="margin-top: 10%; font-size:50px"class="fas fa-file-alt"></p>
+		    		<p>Forms with stamp</p>
+		    	</div>
+		    </div>
+		    <button type="button" class="btn btn-info btn-circle fas fa-upload"></button>
+		</form>
+  	</center>
   </div>
 </template>
 <script>
@@ -43,7 +38,7 @@ import { Slide } from 'vue-burger-menu'
 export default{
   data(){
           return{
-            title: "My account",
+            title: "Formulaire",
         }
       },
   components: {

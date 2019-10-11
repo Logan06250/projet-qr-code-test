@@ -1,7 +1,7 @@
 <template>
 	<center>
 		<div class="container-fluid">
-			<h1>Inspector Gadget</h1>
+			<h1>We chat</h1>
 			<br>
 			<img src= "../assets/logo.png" class="img-fluid">
 			<br>
@@ -9,7 +9,7 @@
 		</div>
 		<div class="container-fluid">
           <form>
-             <button type="button" class="btn btn-info btn-circle fa fa-list" onclick="window.location.href= '#/MyReports'" ></button>
+             <button type="button" class="btn btn-info btn-circle fa fa-file-alt" onclick="window.location.href= '#/Formulaire'" ></button>
               <button type="button" class="btn btn-info btn-circle fas fa-user" onclick="window.location.href= '#/MyAccount'" style="margin-right: 20px"></button>
              
           </form>
