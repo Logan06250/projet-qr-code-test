@@ -8,7 +8,7 @@
         <a id="home" href='#/MyAccount'> 
           <span>Account</span>  
         </a>
-        <a id="home" href='#/'> 
+        <a id="home" href='#/Formulaire'> 
           <span>Form</span>  
         </a>
       </Slide>
@@ -83,7 +83,7 @@
         </div>
       </div>
       <center>
-        <button  id="save" @click="newUser()" class="btn btn-circle btn-info" style="width: 60px;height: 60px; font-size: 15px; margin: 10px; margin-top: -10px">Submit</button>
+        <button  id="save" onclick="window.location.href= '#/MyAccount'" class="btn btn-circle btn-info" style="width: 60px;height: 60px; font-size: 15px; margin: 10px; margin-top: -10px">Submit</button>
       </center>
     </form>
   </div>

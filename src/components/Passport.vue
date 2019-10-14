@@ -8,7 +8,7 @@
         <a id="home" href='#/MyAccount'> 
           <span>Account</span>  
         </a>
-        <a id="home" href='#/'> 
+        <a id="home" href='#/Formulaire'> 
           <span>Form</span> 
         </a>
       </Slide>
@@ -61,7 +61,6 @@
             </label>
           </div>
         </div>
-
         <div class="form-group col-md-6">
           <label for="dateOfBirth">Date of birth:</label>
           <input type="date" class="form-control" id="dateOfBirth">
