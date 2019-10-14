@@ -69,18 +69,6 @@
           <input type="text" class="form-control" @keypress="isNumber($event)" id="CountryCode"
           placeholder="4 00 00 00 00">
         </div>
-              <div style="background-color :  #D8D8D8; width:100%">
-          Passport Information
-        </div>
-        <div class="form-group col-md-6">
-          <label for="PassportNumber">Passport Number:</label>
-          <input type="text" class="form-control" id="PassportNumber"
-          placeholder="00 XX 00000">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="expireDate">Date of expiry:</label>
-          <input type="date" class="form-control" id="expireDate">
-        </div>
       </div>
       <center>
         <button  id="save" onclick="window.location.href= '#/MyAccount'" class="btn btn-circle btn-info" style="width: 60px;height: 60px; font-size: 15px; margin: 10px; margin-top: -10px">Submit</button>
