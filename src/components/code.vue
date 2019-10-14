@@ -11,6 +11,9 @@
         <a id="home" href='#/Formulaire'> 
           <span>Form</span> 
         </a>
+        <a id="home" href='#/Code'> 
+          <span>QR code</span> 
+        </a>
       </Slide>
       <h1 style="margin-left: 80px; padding-top: 5px">{{ title }}</h1>
       <div style="padding-top: 1px"></div>
