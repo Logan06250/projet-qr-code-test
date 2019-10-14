@@ -13,6 +13,7 @@
   import Passport from './components/Passport'
   import Formulaire from './components/Formulaire'
   import Selfie from './components/Selfie'
+  import Code from './components/Code'
   import { Slide } from 'vue-burger-menu'
 
   export default {
@@ -24,6 +25,7 @@
       Passport,
       Formulaire,
       Selfie,
+      Code,
       Slide
     },
     methods: {

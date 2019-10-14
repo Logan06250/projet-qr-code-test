@@ -5,6 +5,7 @@ import MyAccount from '@/components/MyAccount'
 import AccountInfo from '@/components/AccountInfo'
 import Passport from '@/components/Passport'
 import Formulaire from '@/components/Formulaire'
+import Code from '@/components/Code'
 import Selfie from'@/components/Selfie'
 Vue.use(Router)
 
@@ -39,6 +40,11 @@ export default new Router({
       path: '/Selfie',
       name:'Selfie',
       component: Selfie
+    },
+    {
+      path: '/Code',
+      name:'Code',
+      component: Code
     }
   ]
 })

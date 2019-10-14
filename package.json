@@ -42,6 +42,7 @@
     "pouchdb": "^7.1.1",
     "vue": "^2.6.10",
     "vue-burger-menu": "^2.0.2",
+    "vue-qrcode-reader": "^2.1.0",
     "vue-router": "^3.1.3"
   }
 }

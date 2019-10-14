@@ -8,7 +8,7 @@
         <a id="home" href='#/MyAccount'> 
           <span>Account</span>  
         </a>
-        <a id="home" href='#/'> 
+        <a id="home" href='#/Formulaire'> 
           <span>Form</span> 
         </a>
       </Slide>
@@ -19,7 +19,7 @@
       <form>
     <div class="row">
       <div class="col">
-         <button style="margin-top: 50%" type="button" class="btn btn-info btn-circle fas fa-file-alt"  ></button>
+         <button style="margin-top: 50%" type="button" class="btn btn-info btn-circle fas fa-file-alt" onclick="window.location.href= '#/MyAccount'" ></button>
         <p>Selfie</p>
       </div>
 
