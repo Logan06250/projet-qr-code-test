@@ -21,15 +21,14 @@
     <div class="row">
       <div class="col"> 
         <center>
-        <qrcode-drop-zone @decode="onDecode" @init="logErrors">
-      <qrcode-stream style="margin-left:30px; margin-top : 55px" @decode="onDecode" @init="onInit" />
-    </qrcode-drop-zone>
-    <qrcode-capture v-if="noStreamApiSupport" @decode="onDecode" />
-        <p class="decode-result">Last result: <b>{{ result }}</b></p>
+          <qrcode-drop-zone @decode="onDecode" @init="logErrors">
+            <qrcode-stream style="margin-left:30px; margin-top : 55px" @decode="onDecode" @init="onInit" />
+          </qrcode-drop-zone>
+          <qrcode-capture v-if="noStreamApiSupport" @decode="onDecode" />
+          <p class="decode-result">Last result: <b>{{ result }}</b></p>
         </center>
       </div>
-    </div>
-  </div>      
+    </div>      
   </div>
 </template>
 <script>

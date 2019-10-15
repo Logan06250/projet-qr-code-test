@@ -12,7 +12,6 @@
              <button type="button" class="btn btn-info btn-circle fa fa-file-alt" onclick="window.location.href= '#/Formulaire'" ></button>
               <button type="button" class="btn btn-info btn-circle fas fa-user" onclick="window.location.href= '#/MyAccount'"></button>
               <button type="button" class="btn btn-info btn-circle fas fa-qrcode" onclick="window.location.href= '#/Code'" style="margin-right: 20px"></button>
-             
           </form>
         </div>
 	</center>

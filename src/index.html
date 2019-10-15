@@ -20,6 +20,8 @@
   <script src="//cdn.jsdelivr.net/npm/pouchdb@7.1.1/dist/pouchdb.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
 
+  <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+
 
 </head>
 <body>
@@ -32,14 +34,10 @@
 </html>
 
 <script> 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register('/service-worker-cache.js', { 
-      scope: '.'})
-    .then(() => {
-      console.log('Service Worker Registered')
-    })
-}
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker-cache.js', { scope: '.'}).then(() => {console.log('Service Worker Registered')})
+  }
 </script>
 
 <style type="text/css">
