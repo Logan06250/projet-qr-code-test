@@ -7,6 +7,7 @@ import Passport from '@/components/Passport'
 import Formulaire from '@/components/Formulaire'
 import Code from '@/components/Code'
 import Selfie from'@/components/Selfie'
+import Vat from '@/components/Vat'
 Vue.use(Router)
 
 export default new Router({
@@ -45,6 +46,11 @@ export default new Router({
       path: '/Code',
       name:'Code',
       component: Code
+    },
+    {
+      path: '/Vat',
+      name:'Vat',
+      component: Vat
     }
   ]
 })

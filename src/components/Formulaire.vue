@@ -31,7 +31,8 @@
 		    		<p>Forms with stamp</p>
 		    	</div>
 		    </div>
-		    <button type="button" class="btn btn-info btn-circle fas fa-upload"></button>
+		    <button type="button" onclick="window.location.href= '#/Vat'" class="btn btn-info btn-circle">not stamped</button>
+        <button type="button" class="btn btn-info btn-circle">stamp</button>
 		</form>
   	</center>
   </div>
