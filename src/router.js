@@ -4,10 +4,9 @@ import Home from '@/components/Home'
 import MyAccount from '@/components/MyAccount'
 import AccountInfo from '@/components/AccountInfo'
 import Passport from '@/components/Passport'
-import Formulaire from '@/components/Formulaire'
 import Code from '@/components/Code'
 import Selfie from'@/components/Selfie'
-import Vat from '@/components/Vat'
+import FormStamp from '@/components/FormStamp'
 Vue.use(Router)
 
 export default new Router({
@@ -33,11 +32,6 @@ export default new Router({
       component: Passport
     },
     {
-      path: '/Formulaire',
-      name:'Formulaire',
-      component: Formulaire
-    },
-    {
       path: '/Selfie',
       name:'Selfie',
       component: Selfie
@@ -48,9 +42,9 @@ export default new Router({
       component: Code
     },
     {
-      path: '/Vat',
-      name:'Vat',
-      component: Vat
+      path: '/FormStamp',
+      name: 'FormStamp',
+      component: FormStamp
     }
   ]
 })

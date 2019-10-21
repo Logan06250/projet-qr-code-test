@@ -18,44 +18,42 @@
       <h1 style="margin-left: 80px; padding-top: 5px">{{ title }}</h1>
       <div style="padding-top: 1px"></div>
     </div>
-    <center>
-      	<form>
-	      	<div class="row">
-		    	<div class="col">
-		    		<p style="margin-top: 10%; font-size:50px"class="fas fa-file-alt"></p>
-		    		<p>Forms not stamped</p>
-             <div v-for="form in forms">
-                <p>{{form._id}}</p>              
-             </div>
-		    	</div>
-		    	<div class="w-100"></div>
-		    	<div class="col">
-		    		<p style="margin-top: 10%; font-size:50px"class="fas fa-file-alt"></p>
-		    		<p>Forms with stamp</p>
-		    	</div>
-		    </div>
-		    <button type="button" @click="emit()" class="btn btn-info btn-circle fas fa-download"></button>
-		</form>
-  	</center>
+    <div v-if="statement == 0">
+      <Formulaire :forms="forms" v-on:selected="Formulaire($event)"></Formulaire>
+    </div>
+    <div v-if="statement == 1">
+      <Vat :forms="forms" v-on:selected="Formulaire($event)"></Vat>
+    </div>
   </div>
 </template>
 <script>
 var db = new PouchDB("forms")
+import Formulaire from './Formulaire'
+import Vat from './Vat'
 import { Slide } from 'vue-burger-menu'
+
 export default{
-  props: ['forms'],
   data(){
           return{
-            title: "Formulaire",
+            title: "Formulaires",
+            forms:[
+            ],
+            statement:0
         }
       },
   components: {
+      Formulaire,
+      Vat,
       Slide
   },
   methods: {
-    emit: function() {
-          this.$emit("selected",1)
-        }
+    Formulaire: function (form) {
+            if(form == 1){
+                this.statement = 1;
+            }else {
+                this.statement = 0;
+            }
+      },
   }
 };
 </script>
