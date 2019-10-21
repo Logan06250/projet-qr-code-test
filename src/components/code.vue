@@ -32,7 +32,7 @@
             <li class="list-group-item">VAT N° : {{vat}}</li>
           </ul>
           <br>
-          <button  id="save"  class="btn btn-circle btn-info" @click="submitQrCodeInfo()" style="width: 60px;height: 60px; font-size: 15px; margin: 10px; margin-top: -10px">Submit</button>
+          <button  id="save"  class="btn btn-circle btn-info" @click="submitQrCodeInfo();goBack()" style="width: 60px;height: 60px; font-size: 15px; margin: 10px; margin-top: -10px">Submit</button>
         </center>
       </div>
     </div>      
@@ -95,6 +95,9 @@
         var updates = {};
       updates['/company/'  + '/' + this.id] = qrCodeData;
       return firebase.database().ref().update(updates);
+    },
+    goBack:function(){
+      window.history.back();
     }
   }
 };
