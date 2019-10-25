@@ -19,7 +19,7 @@
       <div style="padding-top: 1px"></div>
     </div>
       <center>
-       <button  class="btn btn-circle btn-success fas fa-plus" @click="newItem()"style="width: 60px;height: 60px; font-size: 15px; margin: 10px; margin-top: -10px"></button>
+       <button  class="btn btn-circle btn-success fas fa-plus" @click="newItem(specificForm)"style="width: 60px;height: 60px; font-size: 15px; margin: 10px; margin-top: 40px"></button>
       </center>
       <div class="table-responsive">
         <table class="table">
@@ -34,12 +34,12 @@
             </tr>
           </thead>
           <tbody >
-            <tr v-for="article in articles" >
-              <td><input type="number" class="form-control" :id="article._id + 'nbItem' " value="1"></td>
-              <td><input type="text" class="form-control" :id="article._id + 'item'"></td>
-              <td><input type="text" class="form-control" @keypress="isNumber($event)" :id="article._id + 'itemNumber'" ></td>
-              <td><input type="text" class="form-control" :id="article._id + 'salesPrice'" ></td>
-              <td><input type="text" class="form-control" :id="article._id + 'VATPrice'" ></td>
+            <tr v-for="article in specificForm.articles" :key="article._id">
+              <td><input type="number" class="form-control" :id="article._id + 'nbItem' " :value="article.nbItem" ></td>
+              <td><input type="text" class="form-control" :id="article._id + 'item' " :value="article.item"></td>
+              <td><input type="text" class="form-control" @keypress="isNumber($event)" :id="article._id + 'itemNumber'" :value="article.itemNb" ></td>
+              <td><input type="text" class="form-control" :id="article._id + 'salesPrice'" :value="article.salesPrice"></td>
+              <td><input type="text" class="form-control" :id="article._id + 'VATPrice'" :value="article.VATPrice"></td>
               <td><button type="text" class="btn btn-circle btn-danger fas fa-trash" style="width: 60px;height: 60px; font-size: 15px;" @click="deleteItem(article)"></button></td>
             </tr>
           </tbody>
@@ -54,28 +54,29 @@
 var db = new PouchDB("forms")
 import { Slide } from 'vue-burger-menu'
 export default{
-  props:['forms'],
+  props:['specificForm'],
   data(){
           return{
             title: "Vat Forms",
-            articles:[
-            ]
+            forms: [],
+            
         }
       },
   components: {
       Slide
   },
   mounted: function(){
-   db.get('_id').then(function (doc) {
-        
+      var tempArticles = this.specificForm.articles
+      db.get(this.specificForm._id).then(function (doc) {
+        var articleToPush = tempArticles
+        doc.articles.map(function (article) {
+          articleToPush.push(article)
+        })
+        return db.put(doc)
       }).catch(function (err) {
-        if (err.name === 'not_found') {
-            
-        } else {
-          throw err;
-        }
+        console.log(err)
       })
-  },
+      },
   methods: {
     isNumber: function(evt) {
       evt = (evt) ? evt : window.event;
@@ -86,7 +87,7 @@ export default{
         return true;
       }
     },
-    newItem :function(){
+    newItem :function(specificForm){
       var article= {
         _id: new Date().toISOString(),
         nbItem: 1,
@@ -95,25 +96,57 @@ export default{
         salesPrice: "",
         VATPrice: ""
       }
-      this.articles.push(article)
+        db.get(specificForm._id).then(function(doc) {
+          doc.articles.push(article)
+          specificForm.articles.push(article)
+          return db.put(doc);
+        }).catch(function (err) {
+          console.log(err);
+        });
+
+
     },
     deleteItem: function(article){
-      var delItem = this.articles.indexOf(article)
-      this.articles.splice(delItem, 1)
+      var delItem = this.specificForm.articles.indexOf(article)
+      this.specificForm.articles.splice(delItem, 1)
     },
     emit: function() {
-      this.articles.map(function (article) {
-
-        article.nbItem= document.getElementById(article._id + "nbItem").value
+      this.specificForm.articles.map(function (article) {
+        article.nbItem = document.getElementById(article._id + "nbItem").value
         article.item= document.getElementById(article._id + "item").value
         article.itemNb= document.getElementById(article._id + "itemNumber").value
         article.salesPrice= document.getElementById(article._id + "salesPrice").value
         article.VATPrice= document.getElementById(article._id + "VATPrice").value
+      });
+      let t = {_id: new Date().toISOString(), articles: this.specificForm.articles}
+      if(this.specificForm == 0){
+      db.put(t).then((res) => {
+            console.log("Vat inserted")
+            this.forms.push(t)
+        }).catch((err) => {
+            console.error(err)
+        })
+    }else {
+      var tempArticles = []
+      for(let i = 0; i < this.specificForm.articles.length; i++){
+        tempArticles.push({
+          _id: this.specificForm.articles[i]._id,
+          nbItem: document.getElementById(this.specificForm.articles[i]._id + "nbItem").value,
+          item: document.getElementById(this.specificForm.articles[i]._id + "item").value,
+          itemNb: document.getElementById(this.specificForm.articles[i]._id + "itemNumber").value,
+          salesPrice: document.getElementById(this.specificForm.articles[i]._id + "salesPrice").value,
+          VATPrice: document.getElementById(this.specificForm.articles[i]._id + "VATPrice").value
+        })
+      }
 
-      })
-
-      this.forms.push({_id: "yolo", articles: this.articles})
-      this.$emit("selected",[0,this.forms])
+      db.get(this.specificForm._id).then(function (doc) {
+        doc.articles = tempArticles
+        return db.put(doc)
+      }).catch(function (err) {
+        console.log(err)
+      })}
+      console.log(this.forms)
+      this.$emit("selected",this.forms)
     }
   }
 };

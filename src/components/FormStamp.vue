@@ -19,10 +19,10 @@
       <div style="padding-top: 1px"></div>
     </div>
     <div v-if="statement == 0">
-      <Formulaire :forms="forms" v-on:selected="Formulaire($event)"></Formulaire>
+      <Formulaire :forms="forms" v-on:selectedForm="FormulaireWithForm($event)"></Formulaire>
     </div>
     <div v-if="statement == 1">
-      <Vat :forms="forms" v-on:selected="Formulaire($event)"></Vat>
+      <Vat :specificForm="specificForm" v-on:selected="Vat($event)"></Vat>
     </div>
   </div>
 </template>
@@ -36,6 +36,7 @@ export default{
   data(){
           return{
             title: "Formulaires",
+            specificForm: "",
             forms:[
             ],
             statement:0
@@ -47,13 +48,15 @@ export default{
       Slide
   },
   methods: {
-    Formulaire: function (form) {
-            if(form == 1){
-                this.statement = 1;
-            }else {
-                this.statement = 0;
-            }
+      FormulaireWithForm: function (form) {
+        this.specificForm = form
+        this.statement = 1;
       },
+      Vat: function (forms) {
+        this.forms = forms
+        this.statement = 0;
+      }
+
   }
 };
 </script>

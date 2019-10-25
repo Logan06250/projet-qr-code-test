@@ -25,7 +25,7 @@
 		    		<p style="margin-top: 10%; font-size:50px"class="fas fa-file-alt"></p>
 		    		<p>Forms not stamped</p>
              <div v-for="form in forms">
-                <p>{{form._id}}</p>              
+                <button  class="form-control" @click="emitForm(form)">{{form._id}}</button>              
              </div>
 		    	</div>
 		    	<div class="w-100"></div>
@@ -54,8 +54,22 @@ export default{
   },
   methods: {
     emit: function() {
-          this.$emit("selected",1)
+
+          var newForm = {
+            _id: new Date().toISOString(),
+            articles: [
+            ]
         }
+        db.put(newForm).then((res) => {
+            console.log("Form created")
+        }).catch((err) => {
+            console.error(err)
+        })
+      this.$emit("selectedForm", newForm)
+    },
+    emitForm: function(form) {
+      this.$emit("selectedForm", form)
+    }
   }
 };
 </script>
