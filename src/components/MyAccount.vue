@@ -8,7 +8,7 @@
         <a id="home" href='#/MyAccount'> 
           <span>Account</span>  
         </a>
-        <a id="home" href='#/Formulaire'> 
+        <a id="home" href='#/FormStamp'> 
           <span>Form</span>  
         </a>
         <a id="home" href='#/Code'> 

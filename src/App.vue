@@ -11,9 +11,9 @@
   import MyAccount from './components/MyAccount'
   import AccountInfo from './components/AccountInfo'
   import Passport from './components/Passport'
-  import Formulaire from './components/Formulaire'
   import Selfie from './components/Selfie'
   import Code from './components/Code'
+  import FormStamp from './components/FormStamp'
   import { Slide } from 'vue-burger-menu'
 
   export default {
@@ -23,9 +23,9 @@
       MyAccount,
       AccountInfo,
       Passport,
-      Formulaire,
       Selfie,
       Code,
+      FormStamp,
       Slide
     },
     methods: {

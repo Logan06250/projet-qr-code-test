@@ -21,7 +21,7 @@
 
     <form>
       <div class="form-row">
-        <div style="background-color :  #D8D8D8; width:100%">
+        <div style="background-color: #D8D8D8; width:100%">
           About you
         </div>
         <div class="form-group col-md-6">
@@ -69,23 +69,25 @@
           placeholder="+00">
         </div><div class="form-group col-md-6">
           <label for="Phone">Phone Number:</label>
-          <input type="text" class="form-control" @keypress="isNumber($event)" id="CountryCode"
+          <input type="text" class="form-control" @keypress="isNumber($event)" id="phoneNumber"
           placeholder="4 00 00 00 00">
         </div>
       </div>
       <center>
-        <button  id="save" onclick="window.location.href= '#/MyAccount'" class="btn btn-circle btn-info" style="width: 60px;height: 60px; font-size: 15px; margin: 10px; margin-top: -10px">Submit</button>
+           <button  id="save"  class="btn btn-circle btn-info" @click="Submit()" style="width: 60px;height: 60px; font-size: 15px; margin: 10px; margin-top: -10px">Submit</button>
       </center>
     </form>
   </div>
 </template>
 <script>
+  import firebase from '../Firebase'
   import { Slide } from 'vue-burger-menu'
   
   export default{
   data(){
           return{
             title: "Profile",
+            ref: firebase.firestore().collection('users'),
             User:[
             ]
         }
@@ -103,6 +105,26 @@
         return true;
       }
     },
+    Submit:function(){
+      var postData = {
+        firstName: document.getElementById("firstName").value,
+        lastName:document.getElementById("lastName").value,
+        Birthday:document.getElementById("Birthday").value,
+        Country:document.getElementById("Country").value,
+        CountryCode:document.getElementById("CountryCode").value,
+        Nationality:document.getElementById("Nationality").value,
+        inputAddress:document.getElementById("inputAddress").value,
+        inputZip:document.getElementById("inputZip").value,
+        phoneNumber:document.getElementById("phoneNumber").value,
+      };
+
+      var newPostKey = firebase.database().ref().child('posts').push().key;
+
+      var updates = {};
+      updates['/user-posts/'  + '/' + newPostKey] = postData;
+
+      return firebase.database().ref().update(updates);
+    }
   }
 };
 </script>

@@ -21,18 +21,25 @@
     <div class="row">
       <div class="col"> 
         <center>
-        <qrcode-drop-zone @decode="onDecode" @init="logErrors">
-      <qrcode-stream style="margin-left:30px; margin-top : 55px" @decode="onDecode" @init="onInit" />
-    </qrcode-drop-zone>
-    <qrcode-capture v-if="noStreamApiSupport" @decode="onDecode" />
-        <p class="decode-result">Last result: <b> {{ result }} </b></p>
+          <qrcode-drop-zone @decode="onDecode" @init="logErrors">
+            <qrcode-stream style="margin-left:30px; margin-top : 55px" @decode="onDecode" @init="onInit" />
+          </qrcode-drop-zone>
+          <qrcode-capture v-if="noStreamApiSupport" @decode="onDecode" />
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Company ID : {{id}}</li>
+            <li class="list-group-item">Store name : {{store}}</li>
+            <li class="list-group-item">Adress : {{adress}}</li>
+            <li class="list-group-item">VAT N° : {{vat}}</li>
+          </ul>
+          <br>
+          <button  id="save"  class="btn btn-circle btn-info" @click="submitQrCodeInfo();goBack()" style="width: 60px;height: 60px; font-size: 15px; margin: 10px; margin-top: -10px">Submit</button>
         </center>
       </div>
-    </div>
-  </div>      
+    </div>      
   </div>
 </template>
 <script>
+  import firebase from '../Firebase'
   import { Slide } from 'vue-burger-menu'
   import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader'
   export default{
@@ -40,7 +47,11 @@
             return{
               title: "QrCode",
               result: '',
-              noStreamApiSupport: false
+              noStreamApiSupport: false,
+              id:'',
+              store:"",
+              adress:"",
+              vat:"",
           }
         },
     components: {
@@ -54,8 +65,13 @@
     methods: {
       onDecode (result) {
       this.result = result
+      var splitResult = result.split("/")
+      this.id = splitResult[0]
+      this.store = splitResult[1]
+      this.adress = splitResult[2]
+      this.vat = splitResult[3]
     },
-
+   
     logErrors (promise) {
       promise.catch(console.error)
     },
@@ -68,6 +84,20 @@
           this.noStreamApiSupport = true
         }
       }
+    },
+    submitQrCodeInfo: function(){
+     var qrCodeData = {
+        id: this.id,
+        store: this.store,
+        adress: this.adress,
+        vat: this.vat
+        };
+        var updates = {};
+      updates['/company/'  + '/' + this.id] = qrCodeData;
+      return firebase.database().ref().update(updates);
+    },
+    goBack:function(){
+      window.history.back();
     }
   }
 };
