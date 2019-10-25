@@ -73,7 +73,7 @@
           <input type="date" class="form-control" id="expireDate">
         </div>
         <center>
-          <button  id="save" @click="newUser()" class="btn btn-circle btn-info" style="width: 60px;height: 60px; font-size: 15px; margin: 10px; margin-top: -10px">Submit</button>
+          <button  id="save" class="btn btn-circle btn-info" style="width: 60px;height: 60px; font-size: 15px; margin: 10px; margin-top: -10px">Submit</button>
         </center>
       </form>
   </div>

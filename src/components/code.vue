@@ -25,7 +25,7 @@
       <qrcode-stream style="margin-left:30px; margin-top : 55px" @decode="onDecode" @init="onInit" />
     </qrcode-drop-zone>
     <qrcode-capture v-if="noStreamApiSupport" @decode="onDecode" />
-        <p class="decode-result">Last result: <b>{{ result }}</b></p>
+        <p class="decode-result">Last result: <b> {{ result }} </b></p>
         </center>
       </div>
     </div>

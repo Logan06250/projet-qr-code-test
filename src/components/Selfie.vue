@@ -28,7 +28,7 @@
         <label id="snap" class="btn btn-circle btn-info" style="width: 100px;
     height: 100px; font-size: 26px; margin-top: 50%;" for="files"> Add a photo </label>
     <br>
-        <label id="modify" class="btn btn-circle btn-info" style="font-size: 35px" for="files" @click="deleteImage">edit </label>
+        <label id="modify" class="btn btn-circle btn-info " style="font-size: 35px" for="files" @click="deleteImage">edit </label>
       </center>
       </div>
     </div>
